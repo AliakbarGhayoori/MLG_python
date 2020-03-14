@@ -33,7 +33,7 @@ def findSim(nodeName, featureMat, Graph):
   simList = {}
   for node in Graph.nodes():
     simList[node] = cosineSim(featureMat[nodeName], featureMat[node])
-  simList = {k: v for k, v in sorted(huberManSim.items(), key=lambda item: item[1], reverse = True)}
+  simList = {k: v for k, v in sorted(simList.items(), key=lambda item: item[1], reverse = True)}
   return simList
 
 
@@ -94,6 +94,7 @@ n, bins, patches = plt.hist(simWithHuber, 20, density=1, alpha=0.8)
 plt.title("similarity with Huberman by f")
 plt.show()
 
+print("\n")
 
 print("\n\nwe want to compare structure of HUBERMAN, B subgraph with its nearest node that we calculate, KOCH, C: \n")
 ego = nx.ego_graph(G5, "KOCH, C")
